@@ -37,4 +37,13 @@ public abstract class AbstractBanco implements Banco {
 		return builder.toString();
 	}
 
+    @Override
+    public String getModalidade(Beneficiario beneficiario) {
+        return beneficiario.getModalidade();
+    }
+
+    @Override
+    public String getAgencia(Beneficiario beneficiario) {
+        return beneficiario.getAgencia();
+    }
 }

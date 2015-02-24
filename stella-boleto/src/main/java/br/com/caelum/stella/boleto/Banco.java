@@ -60,10 +60,13 @@ public interface Banco extends Serializable {
 
 	String getAgenciaECodigoBeneficiario(Beneficiario beneficiario);
 
+    String getAgencia(Beneficiario beneficiario);
+
 	String getNumeroFormatadoComDigito();
 
 	GeradorDeDigito getGeradorDeDigito();
 
 	String getNossoNumeroECodigoDocumento(Boleto boleto);
 
+    String getModalidade(Beneficiario beneficiario);
 }
