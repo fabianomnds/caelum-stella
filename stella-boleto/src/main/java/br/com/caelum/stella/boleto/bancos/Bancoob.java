@@ -20,8 +20,7 @@ public class Bancoob extends AbstractBanco implements Banco {
     private static final String DIGITO_NUMERO_BANCOOB = "0";
     private static final String CARTEIRA_1 = "1";
     private static final String CARTEIRA_3 = "3";
-    private static final String NUMERO_PARCELA = "0";
-    private static final String CAMPO_LIVRE = "000";
+    private static final String NUMERO_PARCELA = "001";
 
     @Override
     public String geraCodigoDeBarrasPara(Boleto boleto) {
@@ -29,7 +28,6 @@ public class Bancoob extends AbstractBanco implements Banco {
         Beneficiario beneficiario = boleto.getBeneficiario();
 
         if (beneficiario.getCarteira().equals(CARTEIRA_1) || beneficiario.getCarteira().equals(CARTEIRA_3)) {
-            campoLivre.append(CAMPO_LIVRE);
             campoLivre.append(boleto.getBanco().getCarteiraFormatado(beneficiario));
             campoLivre.append(boleto.getBanco().getAgencia(beneficiario));
             campoLivre.append(boleto.getBanco().getModalidade(beneficiario));

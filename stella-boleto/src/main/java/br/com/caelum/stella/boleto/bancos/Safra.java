@@ -73,8 +73,9 @@ public class Safra extends AbstractBanco implements Banco {
 		builder.append(getNumeroFormatado()).append("-");
 		return builder.append(DIGITO_NUMERO_SAFRA).toString();
 	}
-	
-	private String getAgencia(Beneficiario beneficiario){
+
+    @Override
+	public String getAgencia(Beneficiario beneficiario){
 		StringBuilder builder =new StringBuilder();
 		//O Banco Safra espera uma Agencia com 5 posicoes
 		builder.append("0");
