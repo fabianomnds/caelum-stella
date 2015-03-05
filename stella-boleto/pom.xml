@@ -77,7 +77,15 @@
 		        <version>3.0.1</version>
 		        <scope>provided</scope>
 		        <optional>true</optional>
-		</dependency>		
+		</dependency>
+
+        <!-- JFileHelpers -->
+        <dependency>
+            <groupId>br.com.carros</groupId>
+            <artifactId>jfilehelpers</artifactId>
+            <version>1.0</version>
+        </dependency>
+
 	</dependencies>
 
 	<build>
@@ -136,8 +144,6 @@
 				<version>1.0-beta-2</version>
 					<configuration>
 						<sourceDirectory>src/main/resources</sourceDirectory>
-						<maven.compiler.source>1.6</maven.compiler.source>
-  						<maven.compiler.target>1.6</maven.compiler.target>
   						<compiler>net.sf.jasperreports.engine.design.JRJdtCompiler</compiler>
 					</configuration>
 					<dependencies>
@@ -163,5 +169,13 @@
 			</plugin>
 		</plugins>
 	</build>
+
+    <repositories>
+        <repository>
+            <id>codingpro</id>
+            <name>codingpro</name>
+            <url>http://54.201.109.128/nexus-2.8.1-01/content/repositories/codingpro/</url>
+        </repository>
+    </repositories>
 
 </project>
