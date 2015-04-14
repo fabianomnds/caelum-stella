@@ -5,6 +5,7 @@ import org.coury.jfilehelpers.annotations.*;
 import org.coury.jfilehelpers.enums.AlignMode;
 import org.coury.jfilehelpers.enums.ConverterKind;
 import org.coury.jfilehelpers.enums.TrimMode;
+import org.coury.jfilehelpers.interfaces.ComparableRecord;
 
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  * Created by rafaeldalbosco on 03/03/15.
  */
 @FixedLengthRecord()
-public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
+public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader implements ComparableRecord<CnabRemessaHeader400Bancoob> {
 
     @FieldFixedLength(1)
     public String idRegistro = "0";
@@ -38,7 +39,7 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
 
     @FieldAlign(alignMode = AlignMode.Right, alignChar = '0')
     @FieldFixedLength(4)
-    public String agencia;
+    public String agencia = "";
 
     @FieldAlign(alignMode = AlignMode.Right)
     @FieldFixedLength(1)
@@ -47,11 +48,11 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
     @FieldAlign(alignMode = AlignMode.Right, alignChar = '0')
     @FieldTrim(trimMode = TrimMode.Both)
     @FieldFixedLength(8)
-    public String codigoBeneficiario;
+    public String codigoBeneficiario = "";
 
     @FieldAlign(alignMode = AlignMode.Right)
     @FieldFixedLength(1)
-    public String digitoVerificadorBeneficiario;
+    public String digitoVerificadorBeneficiario = "";
 
     @FieldAlign(alignMode = AlignMode.Right)
     @FieldFixedLength(6)
@@ -59,7 +60,7 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
 
     @FieldAlign(alignMode = AlignMode.Left)
     @FieldFixedLength(30)
-    public String nomeBeneficiario;
+    public String nomeBeneficiario = "";
 
     @FieldAlign(alignMode = AlignMode.Left)
     @FieldFixedLength(18)
@@ -68,11 +69,11 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
     @FieldAlign(alignMode = AlignMode.Left)
     @FieldFixedLength(6)
     @FieldConverter(converter = ConverterKind.Date, format = "ddMMyy")
-    public Date dataGravacaoRemessa;
+    public Date dataGravacaoRemessa = new Date();
 
     @FieldAlign(alignMode = AlignMode.Right, alignChar = '0')
     @FieldFixedLength(7)
-    public Integer sequenciaRemessa;
+    public Integer sequenciaRemessa = 1;
 
     @FieldAlign(alignMode = AlignMode.Right)
     @FieldFixedLength(287)
@@ -80,8 +81,7 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
 
     @FieldAlign(alignMode = AlignMode.Right, alignChar = '0')
     @FieldFixedLength(6)
-    public Integer sequencialRegistro;
-
+    public Integer sequencialRegistro = 1;
 
     public CnabRemessaHeader400Bancoob comIdRegistro(String idRegistro) {
         this.idRegistro = idRegistro.toUpperCase();
@@ -166,5 +166,17 @@ public class CnabRemessaHeader400Bancoob extends CnabRemessaHeader {
     public CnabRemessaHeader400Bancoob comSequencialRegistro(Integer sequencialRegistro) {
         this.sequencialRegistro = sequencialRegistro;
         return this;
+    }
+
+    @Override
+    public boolean equalsRecord(CnabRemessaHeader400Bancoob o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CnabRemessaHeader400Bancoob that = (CnabRemessaHeader400Bancoob) o;
+
+        if (idRegistro != null ? !idRegistro.equals(that.idRegistro) : that.idRegistro != null) return false;
+
+        return true;
     }
 }

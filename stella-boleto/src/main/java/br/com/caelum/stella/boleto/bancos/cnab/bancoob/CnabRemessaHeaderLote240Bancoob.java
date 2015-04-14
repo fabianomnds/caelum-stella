@@ -1,6 +1,6 @@
 package br.com.caelum.stella.boleto.bancos.cnab.bancoob;
 
-import br.com.caelum.stella.boleto.bancos.cnab.CnabRemessaHeader;
+import br.com.caelum.stella.boleto.bancos.cnab.CnabRemessaHeader400Bancoob_;
 import org.coury.jfilehelpers.annotations.*;
 import org.coury.jfilehelpers.annotations.FieldFixedLength;
 import org.coury.jfilehelpers.enums.AlignMode;
@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by rafaeldalbosco on 05/03/15.
  */
 @FixedLengthRecord
-public class CnabRemessaHeaderLote240Bancoob extends CnabRemessaHeader {
+public class CnabRemessaHeaderLote240Bancoob extends CnabRemessaHeader400Bancoob_ {
 
     @FieldFixedLength(3)
     public Integer banco = 756;
